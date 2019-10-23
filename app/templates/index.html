@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+<!-- head -->
+{% block head %} {% endblock %}
+
+<!-- body -->
+{% block content %}
+<div class="home-main">
+  <div class="home-section">
+    <h1 id="welcome">
+      Have you been wasting time looking for a Hustle? <br />Your dream Job is a
+      click away. <br />
+      Try us today.
+    </h1>
+
+    <a class="register" href="{{ url_for('auth.login') }}">LOGIN</a>
+    <a class="login" href="{{ url_for('job.all_jobs') }}"
+      >VIEW AVAILABLE JOBS</a
+    >
+  </div>
+  <div class="container " style="height: 65vh">
+    <h2 style="text-align: center; margin-top:285px">
+      HOW PATAJOB APPLICATION WORK
+    </h2>
+    <!-- card one -->
+    <div class="ui card">
+      <div class="content">
+        <div class="header">CREATE ACCOUNT</div>
+      </div>
+      <div class="content ">
+        <i
+          class="fa fa-sign-in about-icon"
+          style="font-size: 50px;padding-left: 95px; color: #f19414"
+        ></i>
+        <h4 class="ui sub header">Activity</h4>
+        <div class="ui small feed">
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                Create an Account in our website
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                Go ahead and login
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="content">
+              You can go and search for a job or Post job
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- card two -->
+    <div class="ui card" style="margin-left: 40px">
+      <div class="content">
+        <div class="header">SEARCH FOR JOB</div>
+      </div>
+      <div class="content">
+        <i
+          class="fa fa-search "
+          style="font-size: 50px; padding-left: 95px; color: #f19414"
+        ></i>
+        <h4 class="ui sub header">Activity</h4>
+        <div class="ui small feed">
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                <a>Elliot Fu</a> added <a>Jenny Hess</a> to the project
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                <a>Stevie Feliciano</a> was added as an <a>Administrator</a>
+              </div>
+            </div>
+          </div>
+          <div class="event"></div>
+        </div>
+      </div>
+    </div>
+    <!-- card three -->
+    <div class="ui card" style="margin-left: 40px">
+      <div class="content">
+        <div class="header">CONTACT THE EMPLOYER</div>
+      </div>
+      <div class="content">
+        <i
+          class="fa fa-phone about-icon"
+          style="font-size: 50px;padding-left: 95px; color: #f19414"
+        ></i>
+        <h4 class="ui sub header">Activity</h4>
+        <div class="ui small feed">
+          <div class="event">
+            <div class="content">
+              <div class="summary">
+                <p>
+                  Once we have Your Details on our website you can be contacted
+                  by any employer
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="content">
+              <div class="summary"><a>Helen Troy</a> added two pictures</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <h3 style="text-align:center; padding-top: 75px">
+      Contact us through our social media accounts
+    </h3>
+    <i
+      class="fa fa-twitter "
+      style="font-size: 50px; padding-left: 95px; color: #f19414; margin-left: 250px"
+    ></i>
+    <i
+      class="fa fa-facebook "
+      style="font-size: 50px; padding-left: 95px; color: #f19414"
+    ></i>
+    <i
+      class="fa fa-instagram "
+      style="font-size: 50px; padding-left: 95px; color: #f19414"
+    ></i>
+    <i
+      class="fa fa-github "
+      style="font-size: 50px; padding-left: 95px; color: #f19414"
+    ></i>
+    <i
+      class="fa fa-linkedin "
+      style="font-size: 50px; padding-left: 95px; color: #f19414"
+    ></i>
+    <p style="margin-top: 100px;margin-left: 500px">
+      Copyrights &copy 2019 PATAJOB. All rights reserved
+    </p>
+  </div>
+</div>
+
+{% endblock %}

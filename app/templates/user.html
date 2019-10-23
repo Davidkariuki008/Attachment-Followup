@@ -1,0 +1,139 @@
+{% extends 'base.html' %} {% import 'bootstrap/utils.html' as utils %}
+<!-- head -->
+{% block head %} {% endblock %}
+
+<!-- body -->
+{% block content %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+  <h1 style="text-align: center">Reviews for {{ user.username }}</h1>
+  <span class="heading">User Rating</span>
+  {% if average == 0 %}
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+
+  {% elif average == 1 %}
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  {% elif average == 2 %}
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  {% elif average == 3 %}
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+  {% elif average == 4 %}
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star"></span>
+  {% elif average == 5 %}
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  {% endif %}
+  <h3>{{ average }} average based on {{ count }} reviews.</h3>
+  <hr style="border:3px solid #f1f1f1" />
+
+  <div class="row">
+    <div class="side">
+      <div>5 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-5"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>0</div>
+    </div>
+    <div class="side">
+      <div>4 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-4"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>1</div>
+    </div>
+    <div class="side">
+      <div>3 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-3"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>0</div>
+    </div>
+    <div class="side">
+      <div>2 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-2"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>0</div>
+    </div>
+    <div class="side">
+      <div>1 star</div>
+    </div>
+    <div class="middle">
+      <div class="bar-container">
+        <div class="bar-1"></div>
+      </div>
+    </div>
+    <div class="side right">
+      <div>0</div>
+    </div>
+  </div>
+  <h3 style="margin-top: 35px">Comment about {{ user.username }}</h3>
+  {% for review in reviews %} {% if user.username == review.username %}
+  <div class="ui comments">
+    <div class="comment">
+      <a class="avatar">
+        <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" />
+      </a>
+      <div class="content">
+        <a class="author"></a>{{ review.user.username }}</a>
+        <div class="metadata">
+          <div class="date">2 days ago</div>
+          <div class="rating">
+            <i class="star icon"></i>
+            {{ review.rate }} stars
+          </div>
+        </div>
+        <div class="text">
+          {{ review.comment }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+</div>
+
+{% endblock %}

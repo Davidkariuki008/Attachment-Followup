@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% import 'bootstrap/utils.html' as utils %}
+<!-- head -->
+{% block head %} {% endblock %}
+
+<!-- body -->
+{% block content %}
+{{ utils.flashed_messages() }}
+<h1 style="padding-top: 120px; text-align: center">You have been logged out</h1>
+<img id="emoji" src="../static/images/emoji.jpeg" alt="emoji" />
+{% endblock %}

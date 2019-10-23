@@ -1,0 +1,137 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %}
+<!-- flash messages -->
+{% import 'bootstrap/utils.html' as utils %}
+
+<!-- head -->
+{% block head %} {% endblock %}
+
+<!-- body -->
+
+{% block content %}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- search bar -->
+
+{{ utils.flashed_messages() }}
+<div style="background-color:#eaf2f2">
+  <div class="container" style="float: right">
+    <br />
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <form class="card card-sm">
+          <div class="card-body row no-gutters align-items-center">
+            <div class="col-auto">
+              <i class="search icon"></i>
+            </div>
+            <!--end of col-->
+            <div class="col">
+              <input
+                onkeyup="myFunction()"
+                type="text"
+                id="myInput"
+                name=""
+                class="form-control form-control-lg form-control-borderless"
+                type="search"
+                placeholder="Search Job title or Location"
+              />
+            </div>
+            <!--end of col-->
+            <div class="col-auto">
+              <button
+                class="btn btn-lg "
+                style="background-color: #f19414;"
+                type="submit"
+              >
+                Search
+              </button>
+            </div>
+            <!--end of col-->
+          </div>
+        </form>
+      </div>
+      <!--end of col-->
+    </div>
+  </div>
+
+  {% for job in jobs %}
+  <div class="ui raised  card" style="width: 50%; margin-left: 20%">
+    <div class="content">
+      <div class="header">JOB TITLE: {{ job.job_title }}</div>
+      <div class="meta">
+        <span class="right floated time"></span>
+        <span class="category">{{ job.job_categoty }}</span>
+      </div>
+      <div class="description">
+        {{ job.job_description }}
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="left floated">
+        <span id="location">Location: {{ job.location }}</span>
+        <span style="margin-left: 20px"
+          >Employers Email: {{ job.user.email }}</span
+        >
+      </div>
+      <div class="right floated author">
+        {% if job.user.username == current_user.username %}
+        <button
+          class="btn btn-danger"
+          style="margin-right: 40px"
+          data-toggle="modal"
+          data-target="#deleteModal"
+        >
+          DELETE
+        </button>
+        {% endif %}
+        <img
+          class="ui avatar image"
+          src="{{ url_for('static', filename='profile_pics/' + job.user.image_file) }}"
+        />
+        {{ job.user.username }}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteModal"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="deleteModal" style="margin-left: 100px">
+          ARE YOU SURE YOU WANT TO DELETE THIS JOB?
+        </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+        <form
+          action="{{ url_for('job.delete', jobs_id=job.jobs_id) }}"
+          method="POST"
+        >
+          <input class="btn btn-danger" type="submit" name="" value="Delete" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}

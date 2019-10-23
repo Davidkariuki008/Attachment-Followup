@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %}
+<!-- flash messages -->
+{% import 'bootstrap/utils.html' as utils %}
+
+<!-- head -->
+{% block head %} {% endblock %}
+
+<!-- body -->
+{% block content %}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+  <h1 style="text-align: center">These are people looking for job</h1>
+  {% for worker in workers %} {% if worker.employment_status =='Unemployed' or
+  worker.employment_status =='None' %}
+  <div class="ui cards" style="float: left; margin-right:30px; margin-top:5px">
+    <div class="card">
+      <div class="content">
+        <img
+          class="right floated mini ui image"
+          src="{{ url_for('static', filename='profile_pics/' + worker.image_file) }}"
+        />
+        <div class="header">
+          <a
+            class="header"
+            href="{{ url_for('job.user', username = worker.username) }}"
+            >{{ worker.username }}</a
+          >
+        </div>
+        <div class="meta">
+          <span class="date">Phone Number: {{ worker.phone_no }} </span>
+        </div>
+        <div class="description">
+          <h6 style="color: blue">My Description</h6>
+          {{ worker.worker_description }}
+        </div>
+        <p>Employment Status: {{ worker.employment_status }}</p>
+      </div>
+      <div class="extra content">
+        <div class="ui two buttons">
+          <div class="ui basic green button">
+            <a href="{{ url_for('job.review', username = worker.username) }}"
+              >Review</a
+            >
+          </div>
+          <div class="ui basic red button">
+            <a
+              class="header"
+              href="{{ url_for('job.user', username = worker.username) }}"
+              >See Ratings</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div
+    class="ui special cards"
+    style="float:left; margin-right: 30px; margin-top: 0"
+  >
+    <div class="card">
+      <img
+        class="ui medium circular image"
+        src="{{ url_for('static', filename='profile_pics/' + worker.image_file) }}"
+        style="height: 200px"
+      />
+
+      <div class="content">
+        <a
+          class="header"
+          href="{{ url_for('job.user', username = worker.username) }}"
+          >{{ worker.username }}</a
+        >
+        <div class="meta">
+          <span class="date">Phone Number: {{ worker.phone_no }} </span>
+          <p>Employment Status: {{ worker.employment_status }}</p>
+        </div>
+      </div>
+      <div class="extra content">
+        <a style="padding-top: 20px">
+          <i class="map marker alternate icon"></i>
+          {{ worker.location }}
+        </a>
+        <a href="{{ url_for('job.review', username = worker.username) }}">
+          <div
+            class="btn "
+            style="margin-left: 145px;margin-top: 0;padding-top: 0;background-color: #f19414"
+          >
+            REVIEW
+          </div>
+           <button
+            
+          >
+            Review
+          </button> -->
+  <!-- </a>
+      </div>
+    </div>
+  </div> -->
+  {% endif %} {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+.env
+venv/
+.vscode/
+__pycache__/
+XDG_CACHE_HOME/
+migrations/

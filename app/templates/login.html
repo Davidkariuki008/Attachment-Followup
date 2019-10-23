@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %}
+<!-- flash messages -->
+{% import 'bootstrap/utils.html' as utils %}
+
+<!-- head -->
+{% block head %} {% endblock %}
+
+<!-- body -->
+{% block content %}
+
+<!-- Modal Content -->
+<div style="background-color: #eaf2f2; height:100vh">
+  <div class="form-content">
+    {{ utils.flashed_messages() }}
+    <div class="content-section">
+      <h1>LOGIN</h1>
+      <br />
+      {{ wtf.quick_form(form) }}
+      {% if form.email.errors %}
+      <div class="invalid-feedback">
+        {% for error in messages %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <p>
+        Don't have an account please
+        <a href="{{ url_for('auth.register') }}">Signup</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

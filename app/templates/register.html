@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %}
+<!-- utils import -->
+{% import'bootstrap/utils.html' as utils %}
+
+<!-- head -->
+{% block head %} {% endblock %}
+
+<!-- body -->
+{% block content %}
+<!-- Modal Content -->
+<div style="background-color: #eaf2f2">
+  <div class="form-content">
+    {{ utils.flashed_messages() }}
+    <div class="content-section">
+      <h1>CREATE ACCOUNT</h1>
+      <div class="container">
+        {{ wtf.quick_form(form) }}
+        <p>
+          Already have an Account please
+          <a href="{{ url_for('auth.login') }}">sign in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

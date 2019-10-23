@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block head %} {% endblock %}
+<!-- import flask boostrap -->
+{% import 'bootstrap/wtf.html' as wtf %}
+<!-- flash message -->
+{% import 'bootstrap/utils.html' as utils %} {% block content %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="content-section">
+  {{ utils.flashed_messages() }}
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ image_file }}" />
+    <div class="media-body">
+      <h2 class="account-heading">{{ current_user.username }}</h2>
+      <p class="text-secondary">{{ current_user.email }}</p>
+      <p class="text-secondary">{{ current_user.phone_no }}</p>
+    </div>
+  </div>
+  <h1>ACCOUNT INFO</h1>
+  {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}
